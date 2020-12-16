@@ -1,0 +1,23 @@
+
+<div class="clock">
+
+
+
+    <div class="time">
+      <p>{{hours < 10? '0'+ hours : ''+ hours}}</p>
+      <span class="dbdot">:</span>
+      <p>{{minutes < 10? '0' + minutes : ''+minutes}}</p>
+      <span class="dbdot">:</span>
+      <p>{{seconds < 10 ? '0'+ seconds : ''+ seconds }}</p>
+    </div>
+    <div class="btnWrapper">
+      <button class="start btn"  (click)="startTime( )"> start / stop </button>
+      <button  class="wait btn" (click)="dublclick()"> wait </button>
+      <button  class="reset btn"  (click)="reStartCounter()"> reset </button>
+    </div>
+</div>
+
+
+
+
+
