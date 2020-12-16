@@ -1,10 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {timer, Observable, Subscription, fromEvent, pipe, throwError} from 'rxjs';
-import {first, map, timeInterval} from 'rxjs/operators';
-import {error} from "@angular/compiler-cli/src/transformers/util";
-
-
-
+import {timer, Observable, Subscription, fromEvent} from 'rxjs';
+import {  timeInterval} from 'rxjs/operators';
 
 @Component({
   selector: 'app-timer',
@@ -19,10 +15,7 @@ export class TimerComponent implements OnInit {
   sub: Subscription;
   dbclickSub: Subscription;
   dbclick;
-
   counter;
-
-
   constructor() {
 
   }
@@ -42,7 +35,6 @@ export class TimerComponent implements OnInit {
         obs.next(time.interval)
         obs.complete();
       });
-
     })
   }
 
@@ -56,6 +48,7 @@ export class TimerComponent implements OnInit {
     })
 
   }
+
   startTime(): void {
      let count = this.amountSec;
      if (!this.sub || this.sub.closed ){
@@ -67,6 +60,7 @@ export class TimerComponent implements OnInit {
       this.resetCounter();
       }
   }
+
   reStartCounter(): void {
     if ( this.sub && this.amountSec !== 0 ){
       this.sub.unsubscribe();
@@ -76,14 +70,15 @@ export class TimerComponent implements OnInit {
       this.massage('need to start timer');
     }
   }
+
   resetCounter(): void {
     this.sub.unsubscribe();
     this.amountSec = 0
     this.countTime( this.amountSec);
 
   }
-  countTime(amountSec): void {
 
+  countTime(amountSec): void {
     this.seconds = amountSec % 60;
     this.minutes = Math.floor(amountSec % 3600 / 60);
     this.hours = Math.floor(amountSec % 86400 / 3600);
